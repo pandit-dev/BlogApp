@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink,} from "react-router-dom";
 import API from "../services/api";
 import isUserLoggedIn from "../hooks/isUserLoggedin";
+import toast from "react-hot-toast";
 
 
 
@@ -18,15 +19,16 @@ const Navbar = () => {
       // console.log(response);
       
       if (response.data.success) {
-        alert(response.data.message);
         
         window.location.href = '/login';
+        toast.success(response.data.message)
       } else {
-        alert("Logout failed. Please try again.");
+        toast.error(error.response.data.message)
+        
       }
     } catch (error) {
       console.error("Logout Error:", error);
-      alert("An error occurred. Please try again.");
+      toast.error(error.response.data.message)
     }
   };
 

@@ -7,10 +7,13 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { Toaster } from "react-hot-toast";
 
 function App() {
   
   return (
+    <>
+    <Toaster />
     <Router>
       <Navbar />
       <Routes>
@@ -22,6 +25,7 @@ function App() {
         <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
+    </>
   );
 }
 

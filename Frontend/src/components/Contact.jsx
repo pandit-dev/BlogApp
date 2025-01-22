@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import API from "../services/api";
+import toast from "react-hot-toast";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -37,8 +38,8 @@ const Contact = () => {
     e.preventDefault();
     if (validate()) {
       API.post("/contact/", formData)
-        .then((response) => alert("Message sent successfully"))
-        .catch((error) => console.error(error));
+        .then((response) => toast.success(response.data.message))
+        .catch((error) => toast.error(error.response.data.message));
       // Reset form
       setFormData({
         name: "",

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -27,10 +28,11 @@ const Register = () => {
       });
       if (res.data.success) {
         navigate("/");
+        toast.success(res.data.message)
       }
     } catch (error) {
       console.log(error);
-      // toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
     } finally {
       setLoading(false);
     }

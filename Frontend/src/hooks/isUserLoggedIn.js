@@ -5,7 +5,7 @@ const isUserLoggedIn = () => {
   // console.log("Token:", token);
   return token;
 };
-
+isUserLoggedIn()
 export default isUserLoggedIn;
 
   

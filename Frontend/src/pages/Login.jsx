@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -22,12 +23,14 @@ const Login = () => {
         withCredentials: true,
       });
       if (res.data.success) {
+        toast.success(res.data.message);
         navigate("/");
         window.location.reload();
+        // console.log(res.data.message)
       }
     } catch (error) {
       console.log(error);
-      // toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
     } finally {
       setLoading(false);
     }
