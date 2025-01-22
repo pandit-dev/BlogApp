@@ -1,6 +1,5 @@
 export const isAdmin = (req, res, next) => {
     try {
-      // Assuming the `isLoggedIn` middleware sets `req.user` to the logged-in user's data
       const user = req.userId;
       // console.log(req.userId);      
       
@@ -8,8 +7,6 @@ export const isAdmin = (req, res, next) => {
       if (user.role !== 'admin') {
         return res.status(403).json({ success: false, message: "Access denied. Admins only." });
       }
-  
-      // Proceed to the next middleware/route handler
       next();
     } catch (error) {
       console.log(error);
