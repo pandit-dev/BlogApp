@@ -17,7 +17,8 @@ const isLoggedIn = async (req, res, next) => {
       });
     }
     req.userId = decode.userId;
-    // console.log(req.userId);
+    // console.log(userId);
+    
     next();
   } catch (error) {
     console.log(error);

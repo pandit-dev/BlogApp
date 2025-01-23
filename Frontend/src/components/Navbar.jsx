@@ -3,23 +3,33 @@ import { Link, NavLink,} from "react-router-dom";
 import API from "../services/api";
 import isUserLoggedIn from "../hooks/isUserLoggedin";
 import toast from "react-hot-toast";
+import checkAdmin from "../hooks/checkAdmin";
 
 
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
-  useEffect(() => {
-    setIsLoggedIn(isUserLoggedIn);
-  }, []);
+  const [isAdmin, setIsAdmin] = useState(false);
 
+  useEffect(() => {
+    // Check if user is logged in
+    const user = isUserLoggedIn();
+    setIsLoggedIn(user);
+  
+
+    // Check if user role is 'admin'
+    const admin = checkAdmin()
+    setIsAdmin(admin)
+    
+  }, []);
+  
   const handleLogout = async () => {
     try {
       const response = await API.post("/auth/logout");
       // console.log(response);
       
       if (response.data.success) {
-        
+        localStorage.removeItem("user");
         window.location.href = '/login';
         toast.success(response.data.message)
       } else {
@@ -57,6 +67,14 @@ const Navbar = () => {
               Contact Us
             </Link>
           </li>
+          {isAdmin && (
+            <li>
+              <Link to="/dashboard" className="hover:text-gray-400">
+                Dashboard
+              </Link>
+            </li>
+          )}
+          
           {isLoggedIn ? (
             <li
               onClick={handleLogout}

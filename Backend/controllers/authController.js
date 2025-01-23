@@ -23,11 +23,12 @@ export const register = async (req, res) => {
         email,
         password: hash,
       });
-      let token = generateToken(createdUser);
-      res.cookie("token", token, { httpOnly: true, sameSite: "strict" });
+      // let token = generateToken(createdUser);
+      // res.cookie("token", token, { httpOnly: true, sameSite: "strict" });
       return res.status(200).json({
         message: "Account Created successfully !",
         success: true,
+        user :createdUser,
       });
     });
   } catch (error) {
@@ -69,8 +70,7 @@ export const login = async (req, res) => {
       .json({
         message: `Welcome ${user.username}`,
         success: true,
-        user,
-        token,
+        user:user,
       });
   } catch (error) {
     console.log(error);

@@ -27,8 +27,12 @@ const Register = () => {
         withCredentials: true,
       });
       if (res.data.success) {
-        navigate("/");
-        toast.success(res.data.message)
+        // localStorage.setItem("user", JSON.stringify(res.data.user));
+
+        navigate("/login");
+        // window.location.reload();
+        // console.log(res);
+        toast.success(res.data.message);
       }
     } catch (error) {
       console.log(error);

@@ -23,10 +23,13 @@ const Login = () => {
         withCredentials: true,
       });
       if (res.data.success) {
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+
         toast.success(res.data.message);
         navigate("/");
         window.location.reload();
-        // console.log(res.data.message)
+
+        // console.log(res.data)
       }
     } catch (error) {
       console.log(error);

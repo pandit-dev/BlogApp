@@ -19,11 +19,11 @@ const BlogItem = ({ blog }) => {
       <div className="px-6 pt-4 pb-2">
         {/* Blog Metadata */}
         <span className="text-sm text-gray-600">
-          Created: {new Date(blog.createdAt).toLocaleDateString()}
+          Created: {new Date(blog.createdAt).toLocaleDateString("en-GB")}
         </span>
         <br />
         <span className="text-sm text-gray-600">
-          Updated: {new Date(blog.updatedAt).toLocaleDateString()}
+          Updated: {new Date(blog.updatedAt).toLocaleDateString("en-GB")}
         </span>
       </div>
     </div>

@@ -25,7 +25,7 @@ export const sendContactMessage = async (req, res) => {
 export const getContactMessage = async (req, res) => {
   try {
     const contactMessage = await Contact.find().sort({ createdAt: -1 });
-    return res.status(200).json({ contactMessage, success: true });
+    return res.status(200).json({ contactMessage, success: true,message: "All Remarks." });
   } catch (error) {
     console.log(error);
     return res

@@ -1,7 +1,7 @@
 export const isAdmin = (req, res, next) => {
     try {
-      const user = req.userId;
-      // console.log(req.userId);      
+      const user = req.id;
+      console.log(user);      
       
       // Check if the user's role is 'admin'
       if (user.role !== 'admin') {
