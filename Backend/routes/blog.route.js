@@ -8,11 +8,10 @@ import {
 import isLoggedIn from "../middlewares/isLoggedIn.js";
 import { isAdmin } from "../middlewares/isAdmin.js";
 
-
 const router = express.Router();
 
-router.get("/", getAllBlogs);
-router.post("/create" , isLoggedIn,isAdmin, createBlog);
+router.get("/", isLoggedIn, getAllBlogs);
+router.post("/create", isLoggedIn, isAdmin, createBlog);
 router.patch("/:id", isLoggedIn, isAdmin, updateBlog);
 router.delete("/:id", isLoggedIn, isAdmin, deleteBlog);
 

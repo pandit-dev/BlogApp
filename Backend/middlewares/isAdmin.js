@@ -1,10 +1,10 @@
 export const isAdmin = (req, res, next) => {
     try {
-      const user = req.id;
+      const user = req.userRole;
       console.log(user);      
       
       // Check if the user's role is 'admin'
-      if (user.role !== 'admin') {
+      if (user !== 'admin') {
         return res.status(403).json({ success: false, message: "Access denied. Admins only." });
       }
       next();

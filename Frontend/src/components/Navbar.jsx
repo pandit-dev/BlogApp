@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink,} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import API from "../services/api";
 import isUserLoggedIn from "../hooks/isUserLoggedin";
 import toast from "react-hot-toast";
 import checkAdmin from "../hooks/checkAdmin";
-
-
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -15,30 +13,27 @@ const Navbar = () => {
     // Check if user is logged in
     const user = isUserLoggedIn();
     setIsLoggedIn(user);
-  
 
     // Check if user role is 'admin'
-    const admin = checkAdmin()
-    setIsAdmin(admin)
-    
+    const admin = checkAdmin();
+    setIsAdmin(admin);
   }, []);
-  
+
   const handleLogout = async () => {
     try {
       const response = await API.post("/auth/logout");
       // console.log(response);
-      
+
       if (response.data.success) {
         localStorage.removeItem("user");
-        window.location.href = '/login';
-        toast.success(response.data.message)
+        window.location.href = "/login";
+        toast.success(response.data.message);
       } else {
-        toast.error(error.response.data.message)
-        
+        toast.error(error.response.data.message);
       }
     } catch (error) {
       console.error("Logout Error:", error);
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
   };
 
@@ -74,7 +69,7 @@ const Navbar = () => {
               </Link>
             </li>
           )}
-          
+
           {isLoggedIn ? (
             <li
               onClick={handleLogout}

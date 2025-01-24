@@ -6,6 +6,6 @@ import { adminAuth } from "../middlewares/auth.js";
 const router = express.Router();
 
 router.post('/',isLoggedIn, sendContactMessage);
-router.get('/', getContactMessage);
+router.get('/',isLoggedIn, isAdmin, getContactMessage);
 
 export default router;

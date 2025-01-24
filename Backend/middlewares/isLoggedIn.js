@@ -16,7 +16,7 @@ const isLoggedIn = async (req, res, next) => {
         success: false,
       });
     }
-    req.userId = decode.userId;
+    req.userRole = decode.role;
     // console.log(userId);
     
     next();
