@@ -13,7 +13,7 @@ export const register = async (req, res) => {
     const user = await User.findOne({ email });
     if (user) {
       return res.status(401).json({
-        message: "Something went wrong !",
+        message: "User already exist !",
         success: false,
       });
     }
@@ -23,8 +23,7 @@ export const register = async (req, res) => {
         email,
         password: hash,
       });
-      // let token = generateToken(createdUser);
-      // res.cookie("token", token, { httpOnly: true, sameSite: "strict" });
+      
       return res.status(200).json({
         message: "Account Created successfully !",
         success: true,

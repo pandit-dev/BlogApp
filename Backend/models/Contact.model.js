@@ -7,7 +7,6 @@ const contactSchema = new mongoose.Schema(
     phone: { type: Number, required: true },
     subject: { type: String, required: true },
     message: { type: String, required: true },
-    // author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }
 );
