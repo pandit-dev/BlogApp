@@ -53,7 +53,7 @@ const BlogItem = ({ blog, onDelete, onEdit }) => {
 
       {/* Buttons */}
 
-      <div className="flex place-content-between mt-2 px-6 pb-4">
+      <div className="flex place-content-evenly md:place-content-between mt-2 px-6 pb-4">
         <button  onClick={handleReadMore} className="bg-blue-500 text-white px-4 py-2 rounded">
           Read More
         </button>
