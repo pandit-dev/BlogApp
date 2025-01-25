@@ -24,40 +24,35 @@ const Login = () => {
       });
       if (res.data.success) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
-
-        toast.success(res.data.message);
+        toast.success(res?.data?.message);
         navigate("/");
         window.location.reload();
-
-        // console.log(res.data)
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
-    } finally {
+      toast.error(error?.response?.data?.message || "Login Failed");
+    } 
+    finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="max-w-3xl mx-auto my-28 p-6 bg-slate-50 shadow-lg rounded-xl">
       <h1 className="text-4xl font-bold mb-4">Login</h1>
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md p-6 rounded-lg space-y-4 "
-      >
+      <form onSubmit={handleSubmit} className="p-6 space-y-4 ">
         <input
           type="email"
           name="email"
           placeholder="Email"
-          className="flex w-full p-2 border border-gray-300 rounded outline-none"
+          className="flex w-full p-2 border border-gray-300 focus:border-green-500 rounded-xl outline-none"
           onChange={handleChange}
         />
         <input
           type="password"
           name="password"
           placeholder="Password"
-          className="flex w-full p-2 border border-gray-300 rounded outline-none"
+          className="flex w-full p-2 border border-gray-300 focus:border-green-500 rounded-xl outline-none"
           onChange={handleChange}
         />
         <button

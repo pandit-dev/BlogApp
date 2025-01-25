@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import API from "../services/api";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,12 +36,17 @@ const Contact = () => {
     return Object.keys(formErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (validate()) {
-      API.post("/contact/", formData)
-        .then((response) => toast.success(response.data.message))
-        .catch((error) => toast.error(error.response.data.message));
+      try {
+        const response = await API.post("/contact/", formData);
+        toast.success(response?.data?.message)
+      } catch (error) {
+        toast.error(error?.response?.data?.message || "Failed to send message")
+        navigate("/login");
+      }
+      
       // Reset form
       setFormData({
         name: "",
@@ -64,7 +71,7 @@ const Contact = () => {
       </div>
 
       {/* Contact Form Section */}
-      <section className="bg-gray-100 p-6 rounded-lg shadow-md">
+      <section className="max-w-7xl mx-auto my-28 p-6 bg-slate-50 shadow-lg rounded-md">
         <h2 className="text-2xl font-semibold mb-3">Send Us a Message</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -74,7 +81,7 @@ const Contact = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded outline-none"
+              className="w-full px-4 py-2 border rounded-lg outline-none"
             />
             {errors.name && (
               <p className="text-red-500 text-sm">{errors.name}</p>
@@ -88,7 +95,7 @@ const Contact = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded outline-none"
+              className="w-full px-4 py-2 border rounded-lg outline-none"
             />
             {errors.email && (
               <p className="text-red-500 text-sm">{errors.email}</p>
@@ -102,7 +109,7 @@ const Contact = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded outline-none"
+              className="w-full px-4 py-2 border rounded-lg outline-none"
             />
             {errors.phone && (
               <p className="text-red-500 text-sm">{errors.phone}</p>
@@ -116,7 +123,7 @@ const Contact = () => {
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded outline-none"
+              className="w-full px-4 py-2 border rounded-lg outline-none"
             />
             {errors.subject && (
               <p className="text-red-500 text-sm">{errors.subject}</p>
@@ -129,7 +136,7 @@ const Contact = () => {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded outline-none"
+              className="w-full px-4 py-2 border rounded-lg outline-none"
             ></textarea>
             {errors.message && (
               <p className="text-red-500 text-sm">{errors.message}</p>

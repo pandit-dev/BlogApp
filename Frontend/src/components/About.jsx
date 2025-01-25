@@ -38,27 +38,27 @@ const About = () => {
               src="https://plus.unsplash.com/premium_photo-1664536392896-cd1743f9c02c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGVyc29ufGVufDB8fDB8fHww"
               alt="Team Member"
             />
-            <h3 className="text-lg font-semibold">John Doe</h3>
+            <h3 className="text-lg font-semibold">Aayush</h3>
             <p className="text-sm text-gray-500">Founder & CEO</p>
           </div>
           {/* Team Member 2 */}
           <div className="text-center">
             <img
               className="mx-auto rounded-full w-24 h-24 mb-3"
-              src="https://images.unsplash.com/photo-1445053023192-8d45cb66099d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8fHww"
+              src="https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGJlYXV0eWZ1bGwlMjBnaXJsfGVufDB8MHwwfHx8MA%3D%3D"
               alt="Team Member"
             />
-            <h3 className="text-lg font-semibold">Jane Smith</h3>
+            <h3 className="text-lg font-semibold">Helen</h3>
             <p className="text-sm text-gray-500">Chief Editor</p>
           </div>
           {/* Team Member 3 */}
           <div className="text-center">
             <img
               className="mx-auto rounded-full w-24 h-24 mb-3"
-              src="https://plus.unsplash.com/premium_photo-1678197937465-bdbc4ed95815?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+              src="https://avatars.githubusercontent.com/u/188547687?v=4"
               alt="Team Member"
             />
-            <h3 className="text-lg font-semibold">Mark Lee</h3>
+            <h3 className="text-lg font-semibold">Atanu</h3>
             <p className="text-sm text-gray-500">Lead Developer</p>
           </div>
         </div>

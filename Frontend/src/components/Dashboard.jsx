@@ -4,23 +4,35 @@ import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const response = await API.get("/contact/");
-        if (response.data.success) {
-          setMessages(response.data.contactMessage);
-          toast.success(response.data.message);
-        }
-        // console.log(response.data.contactMessage);
-      } catch (error) {
-        toast.error(error.response.data.message);
-      }
-    };
-
     fetchMessages();
   }, []);
+
+  const fetchMessages = async () => {
+    try {
+      const response = await API.get("/contact/");
+      if (response?.data?.success) {
+        setMessages(response?.data?.contactMessage);
+        toast.success(response?.data?.message);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Failed to fetch messages. Please try again.");
+    }finally{
+      setLoading(false)
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-center">
+          <p className="text-lg text-green-600 font-semibold">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6">

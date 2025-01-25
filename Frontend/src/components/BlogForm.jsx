@@ -7,7 +7,6 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  
 
   useEffect(() => {
     if (existingBlog) {
@@ -16,9 +15,6 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
       setContent(existingBlog.content);
     }
   }, [existingBlog]);
-
-  
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,10 +25,10 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
     try {
       if (existingBlog) {
         const response = await API.patch(`/blogs/${existingBlog._id}`, blogData);
-        toast.success(response.data.message);
+        toast.success(response?.data?.message);
       } else {
         const response = await API.post("/blogs/create", blogData);
-        toast.success(response.data.message);
+        toast.success(response?.data?.message);
       }
       onFormClose();
     } catch (error) {
@@ -43,44 +39,65 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">{existingBlog ? "Edit Blog" : "Add Blog"}</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+      {/* Form Header */}
+      <h2 className="text-3xl font-semibold text-gray-800 mb-6">
+        {existingBlog ? "Edit Blog" : "Add Blog"}
+      </h2>
+
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-6">        
         <div>
-          <label className="block mb-1 font-medium">Image URL</label>
+          <label htmlFor="url" className="block text-lg font-medium text-gray-700 mb-2">
+            Image URL
+          </label>
           <input
             type="text"
+            id="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-3 border border-gray-300 rounded-md outline-none shadow-sm focus:border-blue-500"
+            placeholder="Enter image URL"
             required
           />
         </div>
 
+        {/* Title Input */}
         <div>
-          <label className="block mb-1 font-medium">Title</label>
+          <label htmlFor="title" className="block text-lg font-medium text-gray-700 mb-2">
+            Title
+          </label>
           <input
             type="text"
+            id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-3 border border-gray-300 rounded-md outline-none shadow-sm focus:border-blue-500"
+            placeholder="Enter blog title"
             required
           />
         </div>
 
+        {/* Content Input */}
         <div>
-          <label className="block mb-1 font-medium">Content</label>
+          <label htmlFor="content" className="block text-lg font-medium text-gray-700 mb-2">
+            Content
+          </label>
           <textarea
+            id="content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-3 border border-gray-300 rounded-md outline-none shadow-sm  focus:border-blue-500"
+            placeholder="Write your blog content here..."
+            rows="8"
             required
           />
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
-          className={`bg-blue-500 text-white px-4 py-2 rounded ${
+          className={`w-full py-3 text-lg font-medium text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
             isLoading ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={isLoading}

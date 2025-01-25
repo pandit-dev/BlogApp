@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import { Toaster } from "react-hot-toast";
 import AdminRoute from './components/AdminRoute';
 import Dashboard from './components/Dashboard';
+import BlogDetails from './components/BlogDetails';
 
 function App() {
   
@@ -22,10 +23,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<AdminRoute><Dashboard/></AdminRoute>} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </Router>
     </>

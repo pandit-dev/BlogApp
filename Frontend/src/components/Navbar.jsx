@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
 import API from "../services/api";
 import isUserLoggedIn from "../hooks/isUserLoggedin";
 import toast from "react-hot-toast";
@@ -8,13 +9,12 @@ import checkAdmin from "../hooks/checkAdmin";
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Check if user is logged in
     const user = isUserLoggedIn();
     setIsLoggedIn(user);
 
-    // Check if user role is 'admin'
     const admin = checkAdmin();
     setIsAdmin(admin);
   }, []);
@@ -22,66 +22,126 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const response = await API.post("/auth/logout");
-      // console.log(response);
 
       if (response.data.success) {
         localStorage.removeItem("user");
         window.location.href = "/login";
-        toast.success(response.data.message);
-      } else {
-        toast.error(error.response.data.message);
-      }
+        toast.success(response?.data?.message);
+      } 
     } catch (error) {
       console.error("Logout Error:", error);
-      toast.error(error.response.data.message);
+      toast.error("An error occurred while logging out.");
     }
   };
 
   return (
-    <nav className="bg-gray-800 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Blog App</h2>
-        <ul className="flex space-x-4">
+    <nav className="bg-gray-900 text-white shadow-lg">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Blog App</h1>
+
+        {/* Hamburger Menu (Mobile) */}
+        <button
+          className="text-2xl md:hidden focus:outline-none"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle Menu"
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? <FiX /> : <FiMenu />}
+        </button>
+
+        {/* Navigation Links */}
+        <ul
+          className={`fixed z-10 py-8 top-16 left-0 w-full h-auto bg-gray-900 flex flex-col items-center justify-center space-y-8 transform md:static md:w-auto md:h-auto md:bg-transparent md:flex-row md:space-y-0 md:space-x-6 md:py-0 transition-transform duration-300 ease-in-out ${
+            isMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+          }`}
+        >
           <li>
-            <NavLink to="/" className="hover:text-gray-400">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `text-lg ${
+                  isActive ? "text-green-400 underline" : "hover:text-gray-400"
+                }`
+              }
+              onClick={() => setIsMenuOpen(false)}
+            >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="hover:text-gray-400">
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `text-lg ${
+                  isActive ? "text-green-400 underline" : "hover:text-gray-400"
+                }`
+              }
+              onClick={() => setIsMenuOpen(false)}
+            >
               About Us
             </NavLink>
           </li>
           <li>
-            <Link to="/blog" className="hover:text-gray-400">
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                `text-lg ${
+                  isActive ? "text-green-400 underline" : "hover:text-gray-400"
+                }`
+              }
+              onClick={() => setIsMenuOpen(false)}
+            >
               Blog
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/contact" className="hover:text-gray-400">
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `text-lg ${
+                  isActive ? "text-green-400 underline" : "hover:text-gray-400"
+                }`
+              }
+              onClick={() => setIsMenuOpen(false)}
+            >
               Contact Us
-            </Link>
+            </NavLink>
           </li>
           {isAdmin && (
             <li>
-              <Link to="/dashboard" className="hover:text-gray-400">
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  `text-lg ${
+                    isActive ? "text-green-400 underline" : "hover:text-gray-400"
+                  }`
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Dashboard
-              </Link>
+              </NavLink>
             </li>
           )}
-
           {isLoggedIn ? (
             <li
               onClick={handleLogout}
-              className="text-red-400 hover:text-red-500 focus:outline-none cursor-pointer"
+              className="text-lg text-red-400 hover:text-red-500 cursor-pointer"
             >
               Logout
             </li>
           ) : (
             <li>
-              <Link to="/login" className="text-green-400 hover:text-green-500">
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  `text-lg ${
+                    isActive ? "text-green-400 underline" : "text-green-500"
+                  }`
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Login
-              </Link>
+              </NavLink>
             </li>
           )}
         </ul>

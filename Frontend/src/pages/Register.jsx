@@ -27,46 +27,43 @@ const Register = () => {
         withCredentials: true,
       });
       if (res.data.success) {
-        // localStorage.setItem("user", JSON.stringify(res.data.user));
-
         navigate("/login");
-        // window.location.reload();
-        // console.log(res);
-        toast.success(res.data.message);
+        toast.success(res?.data?.message);
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
-    } finally {
+      toast.error(error?.response?.data?.message || "Register Failed");
+    } 
+    finally {
       setLoading(false);
     }
   };
   return (
-    <div className="container mx-auto p-8">
+    <div className="max-w-3xl mx-auto my-28 p-6 bg-slate-50 shadow-lg rounded-xl">
       <h1 className="text-4xl font-bold mb-4">Register</h1>
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md p-6 rounded-lg space-y-4"
+        className="p-6 space-y-4"
       >
         <input
           type="text"
           name="username"
           placeholder="Username"
-          className="w-full p-2 border border-gray-300 rounded outline-none"
+          className="w-full p-2 border border-gray-300 focus:border-green-500 rounded-xl outline-none"
           onChange={handleChange}
         />
         <input
           type="email"
           name="email"
           placeholder="Email"
-          className="w-full p-2 border border-gray-300 rounded outline-none"
+          className="w-full p-2 border border-gray-300 focus:border-green-500 rounded-xl outline-none"
           onChange={handleChange}
         />
         <input
           type="password"
           name="password"
           placeholder="Password"
-          className="w-full p-2 border border-gray-300 rounded outline-none"
+          className="w-full p-2 border border-gray-300 focus:border-green-500 rounded-xl outline-none"
           onChange={handleChange}
         />
         <button
