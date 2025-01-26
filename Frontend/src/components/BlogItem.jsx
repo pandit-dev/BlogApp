@@ -35,8 +35,8 @@ const BlogItem = ({ blog, onDelete, onEdit }) => {
           className="text-gray-700 text-base"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(
-              blog?.content.length > 80
-                ? `${blog?.content.substring(0, 80)}...`
+              blog?.content.length > 150
+                ? `${blog?.content.substring(0, 150)}...`
                 : blog?.content
             ),
           }}
