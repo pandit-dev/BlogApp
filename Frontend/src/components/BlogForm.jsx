@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import API from "../services/api";
 
 const BlogForm = ({ existingBlog, onFormClose }) => {
@@ -46,7 +48,8 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
       </h2>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-6">        
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Image URL Input */}
         <div>
           <label htmlFor="url" className="block text-lg font-medium text-gray-700 mb-2">
             Image URL
@@ -78,19 +81,18 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
           />
         </div>
 
-        {/* Content Input */}
+        {/* Content Input with CKEditor */}
         <div>
           <label htmlFor="content" className="block text-lg font-medium text-gray-700 mb-2">
             Content
           </label>
-          <textarea
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md outline-none shadow-sm  focus:border-blue-500"
-            placeholder="Write your blog content here..."
-            rows="8"
-            required
+          <CKEditor
+            editor={ClassicEditor}
+            data={content || "<p>Write your blog content here...</p>"}
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              setContent(data);
+            }}
           />
         </div>
 
