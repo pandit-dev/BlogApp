@@ -22,7 +22,7 @@ const BlogDetails = () => {
     } catch (error) {
       console.error("Error fetching blog:", error);
       toast.error(error?.response?.data?.message || "Error loading blog");
-      navigate("/blog");
+      navigate("/login");
     } finally {
       setLoading(false);
     }
