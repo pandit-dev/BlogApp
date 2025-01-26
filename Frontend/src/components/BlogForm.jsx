@@ -84,6 +84,9 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
           <CKEditor
             editor={ClassicEditor}
             data={content}
+            config={{
+              licenseKey: "eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3MzkxNDU1OTksImp0aSI6IjM3NWU0ZDUxLTY0MmMtNDA0Mi1iYjMxLTk2YWMzMTAxMmI2OCIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiLCJzaCJdLCJ3aGl0ZUxhYmVsIjp0cnVlLCJsaWNlbnNlVHlwZSI6InRyaWFsIiwiZmVhdHVyZXMiOlsiKiJdLCJ2YyI6ImFhM2Q4NTIwIn0.i8FNMNDAuAjBT3OldOlQFXE9Q32ZqRGYg9e0A1RiMwresirS3xcL07D1Z_X590ETEAUqBZREMWfTMMUj4HpYPQ",
+            }}
             onChange={(event, editor) => {
               const data = editor.getData();
               setContent(data);
