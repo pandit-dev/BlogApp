@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import API from "../services/api";
 import toast from "react-hot-toast";
+import DOMPurify from "dompurify";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -16,19 +17,17 @@ const BlogDetails = () => {
 
   const fetchOneBlog = async () => {
     try {
-      const response = await API.get(`/blogs/${id}`);      
+      const response = await API.get(`/blogs/${id}`);
       setBlog(response?.data?.blog);
     } catch (error) {
       console.error("Error fetching blog:", error);
       toast.error(error?.response?.data?.message || "Error loading blog");
       navigate("/blog");
-    } finally{
+    } finally {
       setLoading(false);
-
     }
   };
 
-  // Loading state
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -41,13 +40,11 @@ const BlogDetails = () => {
 
   return (
     <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
-      {/* Blog Title */}
       <h1 className="text-4xl font-bold text-gray-800 mb-6">{blog.title}</h1>
-      <div className=" pb-2 text-sm text-gray-500">
+      <div className="pb-2 text-sm text-gray-500">
         Posted on: {new Date(blog.createdAt).toLocaleDateString("en-GB")}
       </div>
 
-      {/* Blog Image */}
       {blog.url ? (
         <img
           className="w-full h-96 object-cover rounded-md mb-6"
@@ -60,12 +57,11 @@ const BlogDetails = () => {
         </div>
       )}
 
-      {/* Blog Content */}
-      <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-        <p>{blog.content}</p>
-      </div>
+      <div
+        className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }}
+      ></div>
 
-      {/* Back Button */}
       <div className="mt-8">
         <button
           onClick={() => navigate("/blog")}

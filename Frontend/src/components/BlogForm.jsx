@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import API from "../services/api";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import API from "../services/api";
 
 const BlogForm = ({ existingBlog, onFormClose }) => {
   const [url, setUrl] = useState("");
@@ -42,14 +42,11 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      {/* Form Header */}
       <h2 className="text-3xl font-semibold text-gray-800 mb-6">
         {existingBlog ? "Edit Blog" : "Add Blog"}
       </h2>
 
-      {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Image URL Input */}
         <div>
           <label htmlFor="url" className="block text-lg font-medium text-gray-700 mb-2">
             Image URL
@@ -65,7 +62,6 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
           />
         </div>
 
-        {/* Title Input */}
         <div>
           <label htmlFor="title" className="block text-lg font-medium text-gray-700 mb-2">
             Title
@@ -81,14 +77,13 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
           />
         </div>
 
-        {/* Content Input with CKEditor */}
         <div>
           <label htmlFor="content" className="block text-lg font-medium text-gray-700 mb-2">
             Content
           </label>
           <CKEditor
             editor={ClassicEditor}
-            data={content || "<p>Write your blog content here...</p>"}
+            data={content}
             onChange={(event, editor) => {
               const data = editor.getData();
               setContent(data);
@@ -96,7 +91,6 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
           />
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           className={`w-full py-3 text-lg font-medium text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
