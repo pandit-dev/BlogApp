@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-900 text-white shadow-lg sticky top-0 z-10">
-      <div className="container mx-auto px-4 py-4 flex justify-evenly items-center">
+      <div className="container mx-auto px-4 py-4 flex justify-around items-center">
         <h1 className="text-2xl font-bold">Blog App</h1>
 
         {/* Hamburger Menu (Mobile) */}
