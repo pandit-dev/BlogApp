@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
 import toast from "react-hot-toast";
 import API from "../services/api.js";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { Editor } from "@tinymce/tinymce-react";
 
 const BlogForm = ({ existingBlog, onFormClose }) => {
   const [url, setUrl] = useState("");
@@ -81,15 +80,21 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
           <label htmlFor="content" className="block text-lg font-medium text-gray-700 mb-2">
             Content
           </label>
-          <CKEditor
-            editor={ClassicEditor}
-            data={content}
-            config={{
-              licenseKey: "eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3Njk0NzE5OTksImp0aSI6IjI4YmRmMDk2LTQyNDctNDY3YS1hYzkzLTMyZmJjYWIwYjBjMiIsImxpY2Vuc2VkSG9zdHMiOlsiMTI3LjAuMC4xIiwibG9jYWxob3N0IiwiMTkyLjE2OC4qLioiLCIxMC4qLiouKiIsIjE3Mi4qLiouKiIsIioudGVzdCIsIioubG9jYWxob3N0IiwiKi5sb2NhbCJdLCJ1c2FnZUVuZHBvaW50IjoiaHR0cHM6Ly9wcm94eS1ldmVudC5ja2VkaXRvci5jb20iLCJkaXN0cmlidXRpb25DaGFubmVsIjpbImNsb3VkIiwiZHJ1cGFsIl0sImxpY2Vuc2VUeXBlIjoiZGV2ZWxvcG1lbnQiLCJmZWF0dXJlcyI6WyJEUlVQIl0sInZjIjoiMzI0YjYxNjMifQ.YbsMY4cQ-YdyrMy088SjhsiFRopi0S87sT7dZV_RFVLUA6aYpgIcdv6Ab119Jnk0Gkq1opNYIziPlCQWU7-pmg",
-            }}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              setContent(data);
+          <Editor
+            apiKey="no-api-key" // Free version
+            value={content}
+            onEditorChange={(newContent) => setContent(newContent)}
+            init={{
+              height: 400,
+              menubar: false,
+              plugins: "lists link image",
+              toolbar: "undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | image",
+              images_upload_handler: (blobInfo, success, failure) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(blobInfo.blob());
+                reader.onloadend = () => success(reader.result); // Converts image to Base64
+                reader.onerror = () => failure("Image upload failed");
+              },
             }}
           />
         </div>
