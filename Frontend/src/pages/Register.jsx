@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import API from "../services/api";
+import API from "../services/api.js";
 import toast from "react-hot-toast";
 
 const Register = () => {
@@ -20,12 +20,7 @@ const Register = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await API.post("/auth/register", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
+      const res = await API.post("/auth/register", formData, { headers: { "Content-Type": "application/json", }, withCredentials: true, });
       if (res.data.success) {
         navigate("/login");
         toast.success(res?.data?.message);

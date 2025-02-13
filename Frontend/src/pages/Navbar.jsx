@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
-import API from "../services/api";
-import isUserLoggedIn from "../hooks/isUserLoggedIn";
+import API from "../services/api.js";
+import isUserLoggedIn from "../hooks/isUserLoggedIn.js";
 import toast from "react-hot-toast";
-import checkAdmin from "../hooks/checkAdmin";
+import checkAdmin from "../hooks/checkAdmin.js";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-white shadow-lg">
+    <nav className="bg-gray-900 text-white shadow-lg sticky top-0">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold">Blog App</h1>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import API from "../services/api";
+import API from "../services/api.js";
 import toast from "react-hot-toast";
 import DOMPurify from "dompurify";
 

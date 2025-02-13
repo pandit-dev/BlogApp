@@ -59,14 +59,13 @@ export const updateBlog = async (req, res) => {
   try {
     const { id } = req.params;
     const { url, title, content } = req.body;
-
-    // Find the blog by ID and update it
+    
     const blog = await Blog.findByIdAndUpdate(
       id,
       { url, title, content },
-      { new: true }
+      { new: true, runValidators: true }
     );
-    await blog.save();
+    
     if (!blog) {
       return res
         .status(404)

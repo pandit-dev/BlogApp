@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import About from './components/About';
-import Blog from './pages/Blog';
-import Contact from './components/Contact';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Navbar from './pages/Navbar.jsx';
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Blog from './pages/Blog.jsx';
+import Contact from './pages/Contact.jsx';
+import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
 import { Toaster } from "react-hot-toast";
-import AdminRoute from './components/AdminRoute';
-import Dashboard from './components/Dashboard';
-import BlogDetails from './components/BlogDetails';
+import AdminRoute from './components/AdminRoute.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import BlogDetails from './components/BlogDetails.jsx';
 
 function App() {
   

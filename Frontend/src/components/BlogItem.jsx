@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
-import checkAdmin from "../hooks/checkAdmin";
+import checkAdmin from "../hooks/checkAdmin.js";
 import { useNavigate } from "react-router-dom";
 
 const BlogItem = ({ blog, onDelete, onEdit }) => {

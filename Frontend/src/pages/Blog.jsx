@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import BlogItem from "../components/BlogItem";
-import BlogForm from "../components/BlogForm";
-import API from "../services/api";
+import BlogItem from "../components/BlogItem.jsx";
+import BlogForm from "./BlogForm.jsx";
+import API from "../services/api.js";
 import toast from "react-hot-toast";
-import checkAdmin from "../hooks/checkAdmin";
+import checkAdmin from "../hooks/checkAdmin.js";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);

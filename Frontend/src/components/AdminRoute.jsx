@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import checkAdmin from "../hooks/checkAdmin";
+import checkAdmin from "../hooks/checkAdmin.js";
 
 const AdminRoute = ({ children }) => {
   const admin = checkAdmin();

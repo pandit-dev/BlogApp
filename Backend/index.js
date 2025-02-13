@@ -23,6 +23,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/contact", contactRoutes);
 
+
+
 app.use(express.static(path.join(_dirname, "/Frontend/dist")))
 app.get('*', (_,res)=>{
   res.sendFile(path.resolve(_dirname, "Frontend", "dist", "index.html"))
