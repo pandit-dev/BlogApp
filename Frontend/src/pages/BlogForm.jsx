@@ -85,7 +85,7 @@ const BlogForm = ({ existingBlog, onFormClose }) => {
             editor={ClassicEditor}
             data={content}
             config={{
-              licenseKey: "eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3Njk0NzE5OTksImp0aSI6ImZlZGU0NjgxLTZkMjMtNDI2Yi1iZGM1LTI3YWJhOWYxNjQ0ZCIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiXSwiZmVhdHVyZXMiOlsiRFJVUCJdLCJ2YyI6IjU4YmU2ZTFmIn0.fZqy0sK-KaX1RXlBqP8NligswsQMchprDK3dgbBwx67EjPWQveyXJ0-mm0fvUzqxdUDdPaGCFDEFSo3INWYsTg",
+              licenseKey: "eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3Njk0NzE5OTksImp0aSI6IjI4YmRmMDk2LTQyNDctNDY3YS1hYzkzLTMyZmJjYWIwYjBjMiIsImxpY2Vuc2VkSG9zdHMiOlsiMTI3LjAuMC4xIiwibG9jYWxob3N0IiwiMTkyLjE2OC4qLioiLCIxMC4qLiouKiIsIjE3Mi4qLiouKiIsIioudGVzdCIsIioubG9jYWxob3N0IiwiKi5sb2NhbCJdLCJ1c2FnZUVuZHBvaW50IjoiaHR0cHM6Ly9wcm94eS1ldmVudC5ja2VkaXRvci5jb20iLCJkaXN0cmlidXRpb25DaGFubmVsIjpbImNsb3VkIiwiZHJ1cGFsIl0sImxpY2Vuc2VUeXBlIjoiZGV2ZWxvcG1lbnQiLCJmZWF0dXJlcyI6WyJEUlVQIl0sInZjIjoiMzI0YjYxNjMifQ.YbsMY4cQ-YdyrMy088SjhsiFRopi0S87sT7dZV_RFVLUA6aYpgIcdv6Ab119Jnk0Gkq1opNYIziPlCQWU7-pmg",
             }}
             onChange={(event, editor) => {
               const data = editor.getData();
