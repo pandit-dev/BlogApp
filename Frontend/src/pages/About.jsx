@@ -38,7 +38,7 @@ const About = () => {
               src="https://avatars.githubusercontent.com/u/188547687?v=4"
               alt="Team Member"
             />
-            <h3 className="text-lg font-semibold">Aayush</h3>
+            <h3 className="text-lg font-semibold">Atanu</h3>
             <p className="text-sm text-gray-500">Founder & CEO</p>
           </div>
           {/* Team Member 2 */}
@@ -49,7 +49,7 @@ const About = () => {
               // src="https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGJlYXV0eWZ1bGwlMjBnaXJsfGVufDB8MHwwfHx8MA%3D%3D"
               alt="Team Member"
             />
-            <h3 className="text-lg font-semibold">Helen</h3>
+            <h3 className="text-lg font-semibold">Santanu</h3>
             <p className="text-sm text-gray-500">Chief Editor</p>
           </div>
           {/* Team Member 3 */}
