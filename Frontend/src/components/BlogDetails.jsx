@@ -13,6 +13,7 @@ const BlogDetails = () => {
 
   useEffect(() => {
     fetchOneBlog();
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
 
   const fetchOneBlog = async () => {

@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import AdminRoute from './components/AdminRoute.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import BlogDetails from './components/BlogDetails.jsx';
+import ScrollToTop from './hooks/ScrollToTop.js';
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
     <Toaster />
     <Router>
       <Navbar />
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

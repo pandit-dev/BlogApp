@@ -35,7 +35,7 @@ const About = () => {
           <div className="text-center">
             <img
               className="mx-auto rounded-full w-24 h-24 mb-3"
-              src="https://plus.unsplash.com/premium_photo-1664536392896-cd1743f9c02c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGVyc29ufGVufDB8fDB8fHww"
+              src="https://avatars.githubusercontent.com/u/188547687?v=4"
               alt="Team Member"
             />
             <h3 className="text-lg font-semibold">Aayush</h3>
@@ -45,7 +45,8 @@ const About = () => {
           <div className="text-center">
             <img
               className="mx-auto rounded-full w-24 h-24 mb-3"
-              src="https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGJlYXV0eWZ1bGwlMjBnaXJsfGVufDB8MHwwfHx8MA%3D%3D"
+              src="https://scontent.fccu10-1.fna.fbcdn.net/v/t39.30808-1/502612979_2537087163291319_1197635984151927677_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=104&ccb=1-7&_nc_sid=e99d92&_nc_ohc=dKgz_tmzc7oQ7kNvwGM0U_Q&_nc_oc=AdkBpbu2h2s6T1Qe3LBUunIWQ0BPRLVb6L8FmukbtlQxrCoizEDqkQsOu_jBII-Pi0s&_nc_zt=24&_nc_ht=scontent.fccu10-1.fna&_nc_gid=0V3b5QKpEFTQAlDeiuVZZQ&oh=00_AfP7hs_F1PmAMKmzwvPtvN9T9UdlfV-V1Jv5PfXXGqcNHw&oe=6854B659"
+              // src="https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGJlYXV0eWZ1bGwlMjBnaXJsfGVufDB8MHwwfHx8MA%3D%3D"
               alt="Team Member"
             />
             <h3 className="text-lg font-semibold">Helen</h3>
@@ -55,7 +56,8 @@ const About = () => {
           <div className="text-center">
             <img
               className="mx-auto rounded-full w-24 h-24 mb-3"
-              src="https://avatars.githubusercontent.com/u/188547687?v=4"
+              
+              src="https://avatars.githubusercontent.com/u/203501431?s=400&u=86d07f3bb70f59dd327600efbe4622b9e4ef9da2&v=4"
               alt="Team Member"
             />
             <h3 className="text-lg font-semibold">Atanu</h3>
